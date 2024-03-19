@@ -1,11 +1,11 @@
-package controlador;
+package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import modelo.Papas;
+import modelo.PapaVO;
 import vista.WCompletacion;
 
 public class GestorPrincipal implements ActionListener{
