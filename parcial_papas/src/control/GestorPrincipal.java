@@ -1,15 +1,19 @@
 package control;
 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
 import modelo.PapaVO;
+import vista.WBaseDeDatos;
 import vista.WCompletacion;
 
 public class GestorPrincipal implements ActionListener{
 	private WCompletacion inicio;
+	private WBaseDeDatos wbd;
+	int cont;
 	public GestorPrincipal() {
 		//Creación de la ventana
 			inicio = new WCompletacion();
@@ -17,6 +21,7 @@ public class GestorPrincipal implements ActionListener{
 			inicio.setResizable(false);
 			inicio.setLocationRelativeTo(null);
 			inicio.setTitle("Completando Papas ...");
+			cont=0;
 			
 		//Orejas de los actionlisteners
 			this.inicio.btnSalir1.addActionListener(this);
@@ -39,8 +44,28 @@ public class GestorPrincipal implements ActionListener{
 				this.inicio.fieldFloracion.getText().isEmpty() || 
 				this.inicio.fieldBayas.getText().isEmpty() || 
 				this.inicio.fieldTuberculo.getText().isEmpty())) {
+				cont++;
 				
-				
+				if (cont==3) {
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+								//Abrir ventana de base de datos
+								wbd = new WBaseDeDatos();
+								wbd.setVisible(true);
+								wbd.setResizable(false);
+								wbd.setLocationRelativeTo(null);
+								wbd.setTitle("Base de Datos Papas Nativas Colombianas");
+								
+								//cerrar la actual ventana
+								inicio.setVisible(false);
+							
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+				}
 			}else {
 				this.inicio.aviso("Hay campos que NO ha llenado. Por favor rellénelos.");
 			}

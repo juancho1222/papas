@@ -45,26 +45,13 @@ public class WBaseDeDatos extends JFrame {
 	private JButton btnEliminar;
 	private JButton btnRegistrar;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					WBaseDeDatos frame = new WBaseDeDatos();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public WBaseDeDatos() {
+		iniciar();
 	}
-
 	/**
 	 * Create the frame.
 	 */
-	public WBaseDeDatos() {
+	public void iniciar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 800);
 		contentPane = new JPanel();
