@@ -44,6 +44,7 @@ public class WBaseDeDatos extends JFrame {
 	private JButton btnActualizar;
 	private JButton btnEliminar;
 	private JButton btnRegistrar;
+	private final ButtonGroup groupZonaConsulta = new ButtonGroup();
 
 	public WBaseDeDatos() {
 		iniciar();
@@ -160,6 +161,7 @@ public class WBaseDeDatos extends JFrame {
 		panelConsulta.add(fieldNombreC);
 		
 		JRadioButton rdbtnBoyacaC = new JRadioButton("Boyacá");
+		groupZonaConsulta.add(rdbtnBoyacaC);
 		rdbtnBoyacaC.setForeground(new Color(0, 0, 0));
 		rdbtnBoyacaC.setFont(new Font("Roboto", Font.BOLD, 13));
 		rdbtnBoyacaC.setBackground(new Color(255, 255, 255));
@@ -167,6 +169,7 @@ public class WBaseDeDatos extends JFrame {
 		panelConsulta.add(rdbtnBoyacaC);
 		
 		JRadioButton rdbtnNariñoC = new JRadioButton("Nariño");
+		groupZonaConsulta.add(rdbtnNariñoC);
 		rdbtnNariñoC.setForeground(new Color(0, 0, 0));
 		rdbtnNariñoC.setFont(new Font("Roboto", Font.BOLD, 13));
 		rdbtnNariñoC.setBackground(new Color(255, 255, 255));
@@ -174,6 +177,7 @@ public class WBaseDeDatos extends JFrame {
 		panelConsulta.add(rdbtnNariñoC);
 		
 		JRadioButton rdbtnCundinamarcaC = new JRadioButton("Cundinamarca");
+		groupZonaConsulta.add(rdbtnCundinamarcaC);
 		rdbtnCundinamarcaC.setForeground(new Color(0, 0, 0));
 		rdbtnCundinamarcaC.setFont(new Font("Roboto", Font.BOLD, 13));
 		rdbtnCundinamarcaC.setBackground(new Color(255, 255, 255));
