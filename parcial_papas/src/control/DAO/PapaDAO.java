@@ -4,7 +4,7 @@ package control.DAO;
 import modelo.conexion.*;
 import modelo.PapaVO;
 import java.util.ArrayList;
-/*
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,4 +21,4 @@ public class PapaDAO {
         st = null;
         rs = null;
     }
-*/
+}
