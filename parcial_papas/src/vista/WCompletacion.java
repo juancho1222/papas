@@ -192,7 +192,7 @@ public class WCompletacion extends JFrame {
 		fieldBayas.setBounds(431, 496, 522, 28);
 		contentPane.add(fieldBayas);
 		
-		JLabel lblBayas = new JLabel("Hábito de crecimiento:");
+		JLabel lblBayas = new JLabel("Bayas:");
 		lblBayas.setForeground(new Color(255, 255, 255));
 		lblBayas.setFont(new Font("Roboto", Font.BOLD, 16));
 		lblBayas.setBounds(431, 457, 522, 28);

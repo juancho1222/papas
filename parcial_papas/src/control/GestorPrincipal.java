@@ -16,7 +16,7 @@ public class GestorPrincipal implements ActionListener{
 			inicio.setVisible(true);
 			inicio.setResizable(false);
 			inicio.setLocationRelativeTo(null);
-			inicio.setTitle("Papas Nativas Colombianas");
+			inicio.setTitle("Completando Papas ...");
 			
 		//Orejas de los actionlisteners
 			this.inicio.btnSalir1.addActionListener(this);
@@ -30,13 +30,16 @@ public class GestorPrincipal implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (("salir1").equals(e.getActionCommand())) {			
+		if (("salir1").equals(e.getActionCommand())) {	
+			
 			cerrarVentana(this.inicio.avisoCerrarVentana());
+			
 		}else if(("continuar").equals(e.getActionCommand())) {
 			if (!(this.inicio.fieldHabito.getText().isEmpty() ||
 				this.inicio.fieldFloracion.getText().isEmpty() || 
 				this.inicio.fieldBayas.getText().isEmpty() || 
 				this.inicio.fieldTuberculo.getText().isEmpty())) {
+				
 				
 			}else {
 				this.inicio.aviso("Hay campos que NO ha llenado. Por favor rellénelos.");
