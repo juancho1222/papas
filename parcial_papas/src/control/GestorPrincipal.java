@@ -3,16 +3,19 @@ package control;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import modelo.PapaVO;
+
 import vista.WBaseDeDatos;
 import vista.WCompletacion;
 
 public class GestorPrincipal implements ActionListener{
 	private WCompletacion inicio;
 	private WBaseDeDatos wbd;
+	public ControlPapa ctpapa;
+	
 	int cont;
 	public GestorPrincipal() {
 		//Creación de la ventana
@@ -45,6 +48,22 @@ public class GestorPrincipal implements ActionListener{
 				this.inicio.fieldBayas.getText().isEmpty() || 
 				this.inicio.fieldTuberculo.getText().isEmpty())) {
 				cont++;
+				
+				this.inicio.fieldNombre.setText("");
+				this.inicio.fieldEspecie.setText("");
+				this.inicio.fieldZona.setText("");
+				
+				try {
+					ctpapa.crearPapa(this.inicio.fieldNombre.getText(), 
+						this.inicio.fieldEspecie.getText(), 
+						this.inicio.fieldZona.getText(), 
+						this.inicio.fieldHabito.getText(),
+						this.inicio.fieldFloracion.getText(),						
+						this.inicio.fieldBayas.getText(),
+						this.inicio.fieldTuberculo.getText());
+				}catch(SQLException ex) {
+					this.inicio.aviso("No se pudo realizar la inserción en la base de datos");
+				}
 				
 				if (cont==3) {
 					EventQueue.invokeLater(new Runnable() {

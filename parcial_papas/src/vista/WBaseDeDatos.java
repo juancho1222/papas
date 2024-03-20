@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class WBaseDeDatos extends JFrame {
 
@@ -27,7 +30,13 @@ public class WBaseDeDatos extends JFrame {
 	public JTextField fieldFloracion;
 	public JTextField fieldBayas;
 	public JTextField fieldTuberculo;
-	public JTextField textField_1;
+	
+	public JButton btnActualizar;
+	public JButton btnEliminar;
+	public JButton btnRegistrar;
+	
+	public JTable tableBaseDeDatos;
+	DefaultTableModel modeloTabla;
 	
 	
 	public JRadioButton rdbtnCundinamarca; 
@@ -40,10 +49,9 @@ public class WBaseDeDatos extends JFrame {
 	private JTextField fieldTuberculoC;
 	private JTextField fieldNombreC;
 	private JTextField fieldEspecieC;
-	private JButton btnConsultar;
-	private JButton btnActualizar;
-	private JButton btnEliminar;
-	private JButton btnRegistrar;
+	
+	public JButton btnConsultar;
+
 	private final ButtonGroup groupZonaConsulta = new ButtonGroup();
 
 	public WBaseDeDatos() {
@@ -54,7 +62,7 @@ public class WBaseDeDatos extends JFrame {
 	 */
 	public void iniciar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1200, 800);
+		setBounds(100, 100, 1500, 1000);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,24 +70,24 @@ public class WBaseDeDatos extends JFrame {
 		
 		JPanel panelLogo = new JPanel();
 		panelLogo.setBackground(new Color(255, 255, 174));
-		panelLogo.setBounds(0, 0, 1184, 130);
+		panelLogo.setBounds(0, 0, 1484, 130);
 		contentPane.add(panelLogo);
 		panelLogo.setLayout(null);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(252, 0, 720, 129);
+		lblLogo.setBounds(351, 0, 720, 129);
 		imagenEnLabel("src/imgs/minagricultura.png",lblLogo,panelLogo);		
 			
 		JPanel panelREA = new JPanel();
 		panelREA.setForeground(new Color(255, 255, 255));
 		panelREA.setBackground(new Color(0, 0, 0));
-		panelREA.setBounds(0, 130, 621, 631);
+		panelREA.setBounds(0, 130, 797, 831);
 		contentPane.add(panelREA);
 		
 		JPanel panelConsulta = new JPanel();
 		panelConsulta.setBackground(new Color(255, 255, 255));
 		panelConsulta.setForeground(new Color(0, 0, 0));
-		panelConsulta.setBounds(620, 130, 564, 631);
+		panelConsulta.setBounds(796, 130, 688, 831);
 		contentPane.add(panelConsulta);
 		panelConsulta.setLayout(null);
 		
@@ -191,7 +199,7 @@ public class WBaseDeDatos extends JFrame {
 		panelConsulta.add(fieldEspecieC);
 		
 		btnConsultar = new JButton("CONSULTAR");
-		btnConsultar.setBounds(10, 296, 544, 23);
+		btnConsultar.setBounds(10, 296, 668, 23);
 		panelConsulta.add(btnConsultar);
 		panelREA.setLayout(null);
 		
@@ -311,16 +319,52 @@ public class WBaseDeDatos extends JFrame {
 		panelREA.add(rdbtnCundinamarca);
 		
 		btnRegistrar = new JButton("Registrar");
-		btnRegistrar.setBounds(0, 297, 211, 23);
+		btnRegistrar.setBounds(0, 297, 250, 23);
 		panelREA.add(btnRegistrar);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(207, 297, 211, 23);
+		btnEliminar.setBounds(248, 297, 250, 23);
 		panelREA.add(btnEliminar);
 		
 		btnActualizar = new JButton("Actualizar");
-		btnActualizar.setBounds(417, 297, 194, 23);
+		btnActualizar.setBounds(495, 297, 292, 23);
 		panelREA.add(btnActualizar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 331, 777, 489);
+		panelREA.add(scrollPane);
+		
+		tableBaseDeDatos = new JTable();
+		tableBaseDeDatos.setFont(new Font("Roboto", Font.BOLD, 13));
+		tableBaseDeDatos.setModel(modeloTabla = new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nombre", "Especie", "Zona de Producci\u00F3n", "H\u00E1bito de Crecimiento", "Floraci\u00F3n", "Bayas", "Tub\u00E9rculo"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		tableBaseDeDatos.getColumnModel().getColumn(0).setResizable(false);
+		tableBaseDeDatos.getColumnModel().getColumn(0).setPreferredWidth(95);
+		tableBaseDeDatos.getColumnModel().getColumn(1).setResizable(false);
+		tableBaseDeDatos.getColumnModel().getColumn(1).setPreferredWidth(84);
+		tableBaseDeDatos.getColumnModel().getColumn(2).setResizable(false);
+		tableBaseDeDatos.getColumnModel().getColumn(2).setPreferredWidth(109);
+		tableBaseDeDatos.getColumnModel().getColumn(3).setResizable(false);
+		tableBaseDeDatos.getColumnModel().getColumn(3).setPreferredWidth(189);
+		tableBaseDeDatos.getColumnModel().getColumn(4).setResizable(false);
+		tableBaseDeDatos.getColumnModel().getColumn(4).setPreferredWidth(199);
+		tableBaseDeDatos.getColumnModel().getColumn(5).setResizable(false);
+		tableBaseDeDatos.getColumnModel().getColumn(5).setPreferredWidth(185);
+		tableBaseDeDatos.getColumnModel().getColumn(6).setResizable(false);
+		tableBaseDeDatos.getColumnModel().getColumn(6).setPreferredWidth(177);
+		scrollPane.setViewportView(tableBaseDeDatos);
 		
 	}
 	
