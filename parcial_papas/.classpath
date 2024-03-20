@@ -6,7 +6,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/juanc/Downloads/mysql-connector-java-5.1.46.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/Camilo/Downloads/mysql-connector-java-5.1.46.jar">
+>>>>>>> branch 'main' of https://github.com/juancho1222/papas.git
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
